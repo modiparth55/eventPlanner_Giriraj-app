@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Events;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('calendar');
+        $events = Events::withCount('events')
+            ->get();
+
+        return view('calendar', compact('events'));
     }
 }
