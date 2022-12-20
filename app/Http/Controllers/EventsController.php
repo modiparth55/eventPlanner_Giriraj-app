@@ -29,13 +29,6 @@ class EventsController extends Controller
     }
     public function calendar(Request $request)
     {
-        // if ($request->ajax()) {
-        //     $data = Events::whereBetween('event_start_date', [$request->start, $request->end])
-        //         ->get(['id', 'event_title', 'event_start_date', 'event_end_date']);
-        //     return response()->json($data);
-        // }
-        // return view('calendar');
-
         $events = Events::withCount('events')
             ->get();
 
